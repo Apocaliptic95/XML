@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:properties xmlns:p="http://RPG.org/wlasciwosci">
+  <p:property>
+    <p:id>prop0001</p:id>
+    <p:name>Add Damage</p:name>
+    <p:price>100</p:price>
+    <p:description>Adds damage to any weapon.</p:description>
+    <p:value p:propertyUnit="number">50</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0002</p:id>
+    <p:name>Enhanced Damage</p:name>
+    <p:price>200</p:price>
+    <p:description>Upgrades any weapon damage.</p:description>
+    <p:value p:propertyUnit="percentage">2</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0003</p:id>
+    <p:name>Enhanced Defense</p:name>
+    <p:price>200</p:price>
+    <p:description>Upgrades any armour defense.</p:description>
+    <p:value p:propertyUnit="percentage">2</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0004</p:id>
+    <p:name>Add Defense</p:name>
+    <p:price>100</p:price>
+    <p:description>Adds defense to any armour.</p:description>
+    <p:value p:propertyUnit="number">100</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0005</p:id>
+    <p:name>Ignite</p:name>
+    <p:price>500</p:price>
+    <p:description>Adds ignite chance to weapon.</p:description>
+    <p:value p:propertyUnit="percentage">10</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0006</p:id>
+    <p:name>Freeze</p:name>
+    <p:price>450</p:price>
+    <p:description>Adds freeze chance to weapon.</p:description>
+    <p:value p:propertyUnit="percentage">10</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0006</p:id>
+    <p:name>Poison</p:name>
+    <p:price>400</p:price>
+    <p:description>Adds poison chance to weapon.</p:description>
+    <p:value p:propertyUnit="percentage">20</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0006</p:id>
+    <p:name>Helth Regeneration</p:name>
+    <p:price>100</p:price>
+    <p:description>Regenerate current health.</p:description>
+    <p:value p:propertyUnit="number">200</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0007</p:id>
+    <p:name>Vitality</p:name>
+    <p:price>300</p:price>
+    <p:description>Adds points to vitality.</p:description>
+    <p:value p:propertyUnit="number">1</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0008</p:id>
+    <p:name>Strength</p:name>
+    <p:price>300</p:price>
+    <p:description>Adds points to strength.</p:description>
+    <p:value p:propertyUnit="number">1</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0009</p:id>
+    <p:name>Dexterity</p:name>
+    <p:price>300</p:price>
+    <p:description>Adds points to dexterity.</p:description>
+    <p:value p:propertyUnit="number">1</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0010</p:id>
+    <p:name>Energy</p:name>
+    <p:price>300</p:price>
+    <p:description>Adds points to energy.</p:description>
+    <p:value p:propertyUnit="number">1</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0011</p:id>
+    <p:name>Fire Resist</p:name>
+    <p:price>400</p:price>
+    <p:description>Add percents to fire resist.</p:description>
+    <p:value p:propertyUnit="percentage">5</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0012</p:id>
+    <p:name>Cold Resist</p:name>
+    <p:price>400</p:price>
+    <p:description>Add percents to cold resist.</p:description>
+    <p:value p:propertyUnit="percentage">5</p:value>
+  </p:property>
+  <p:property>
+    <p:id>prop0013</p:id>
+    <p:name>Poison Resist</p:name>
+    <p:price>400</p:price>
+    <p:description>Add percents to poison resist.</p:description>
+    <p:value p:propertyUnit="percentage">5</p:value>
+  </p:property>
+</p:properties>

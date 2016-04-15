@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://RPG.org/wlasciwosci"
+    elementFormDefault="qualified"
+    xmlns="http://RPG.org/wlasciwosci"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="properties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="property" type="property" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="propertyKey">
+      <xs:selector xpath="property"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="property">
+    <xs:sequence>
+      <xs:element name="id" type="propertyId"/>
+      <xs:element name="name" type="propertyName"/>
+      <xs:element name="price" type="propertyPrice"/>
+      <xs:element name="description" type="propertyDescription"/>
+      <xs:element name="value" type="propertyValue"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="propertyId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[p][r][o][p][0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="propertyName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([A-Z][a-z]*[ ]?)+"/>
+      <xs:minLength value="2"/>
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="propertyPrice">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1000000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="propertyDescription">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3"/>
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="propertyValue">
+    <xs:simpleContent>
+      <xs:extension base="propertyValueSimple">
+        <xs:attribute ref="propertyUnit" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="propertyValueSimple">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="n/d"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:positiveInteger"/>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:attribute name="propertyUnit" >
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="percentage"/>
+        <xs:enumeration value="level"/>
+        <xs:enumeration value="number"/>
+        <xs:enumeration value="none"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  
+</xs:schema>

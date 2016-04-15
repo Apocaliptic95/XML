@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://RPG.org/przedmioty"
+    elementFormDefault="qualified"
+    xmlns="http://RPG.org/przedmioty"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="itemList" type="itemList"/>
+        <xs:element name="assignedProperty" type="assignedProperty"/>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:keyref name="KeyRef" refer="Key">
+        <xs:selector xpath="assignedProperty/assignment"/>
+        <xs:field xpath="itemId"/>
+    </xs:keyref>
+    <xs:key name="Key">
+        <xs:selector xpath="itemList/item"/>
+        <xs:field xpath="ID"/>
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="itemList">
+    <xs:sequence>
+      <xs:element name="item" type="item" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element name="id" type="itemId"/>
+      <xs:element name="name" type="itemName"/>
+      <xs:element name="occurrence" type="itemOccurrence"/>
+      <xs:element name="type" type="itemType"/>
+      <xs:element name="addDate" type="itemAddDate"/>
+      <xs:element name="damage" type="itemDamage"/>
+      <xs:element name="armour" type="itemArmour"/>
+      <xs:element name="price" type="itemPrice"/>
+      <xs:element name="maxAssignments" type="itemMaxAssignments"/>
+      <xs:element name="imagePath" type="itemImagePath"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="itemId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z]{3}[0-9]{4}"/>
+      <xs:minLength value="2"/>
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([A-Z][a-z]*[ ]?)+"/>
+      <xs:minLength value="2"/>
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemOccurrence">
+    <xs:restriction base="xs:unsignedShort">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="10"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="weapon" />
+      <xs:enumeration value="armour" />
+      <xs:enumeration value="helm" />
+      <xs:enumeration value="gloves" />
+      <xs:enumeration value="belt" />
+      <xs:enumeration value="ring" />
+      <xs:enumeration value="amulet" />
+      <xs:enumeration value="mixture" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemAddDate">
+    <xs:restriction base="xs:date">
+      <xs:pattern value="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemDamage">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="n/d"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list>
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:minInclusive value="0"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:list>
+          </xs:simpleType>
+          <xs:length value="2"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemArmour">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="n/d"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:positiveInteger"/>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemPrice">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1000000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemMaxAssignments">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemImagePath">
+    <xs:restriction base="xs:anyURI">
+      <xs:pattern value="[.][/][i][m][a][g][e][s][/]([a-z]|[0-9]){2,}[.]([j][p][g]|[p][n][g])"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="assignedProperty">
+    <xs:sequence>
+      <xs:element name="assignment" type="assignment" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="assignment">
+    <xs:sequence>
+      <xs:element name="itemId" type="itemId"/>
+      <xs:element name="propertyId" type="propertyId" minOccurs="1" maxOccurs="20"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="propertyId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[p][r][o][p][0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
